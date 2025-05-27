@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gethsemane SDA Church Announcements App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .list-decimal.list-inside {
+            padding-left: 1.25rem; /* 20px */
+            text-indent: -1.25rem;
+        }
+
+        .list-decimal > li {
+            margin-left: 0.5rem;
+            padding-left: 0.5rem;
+            display: list-item;
+        }
+
+        .list-decimal li::marker {
+            font-weight: bold;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white py-4 text-center shadow-md">
+        <h1 class="text-2xl font-semibold">Gethsemane Church Announcements App</h1>
+    </header>
+
+    <main class="container mx-auto mt-6 p-4">
+        <section id="thought-of-the-day" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">La Pensée du Jour</h2>
+            <div class="flex justify-between items-center">
+                <p id="daily-thought" class="text-gray-700 break-words">Loading...</p>
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-thought-text" placeholder="Enter your text for the day"
+                       class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <button id="add-thought-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Pensée
+                </button>
+            </div>
+        </section>
+
+        <section id="sunrise-sunset" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Sunset</h2>
+            <div id="sunrise-sunset-info" class="grid grid-cols-1 sm:grid-cols-7 gap-4">
+                <div><p class="text-gray-700 text-center" id="day-name-0">Loading...</p><p id="sunset-time-0" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-1">Loading...</p><p id="sunset-time-1" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-2">Loading...</p><p id="sunset-time-2" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-3">Loading...</p><p id="sunset-time-3" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-4">Loading...</p><p id="sunset-time-4" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-5">Loading...</p><p id="sunset-time-5" class="text-center">Loading...</p></div>
+                <div><p class="text-gray-700 text-center" id="day-name-6">Loading...</p><p id="sunset-time-6" class="text-center">Loading...</p></div>
+            </div>
+        </section>
+
+        <section id="announcements" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Announcements</h2>
+            <ul id="announcement-list" class="list-decimal list-inside">
+            </ul>
+
+            <div class="mt-4 flex flex-col sm:flex-row gap-2 items-center">
+                <label for="ancien-service-name" class="font-medium text-gray-700 whitespace-nowrap">Ancien de service:</label>
+                <input type="text" id="ancien-service-name" placeholder="Name"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="tel" id="ancien-service-phone" placeholder="Phone Number"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-ancien-service-button"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add
+                </button>
+            </div>
+
+            <div class="mt-4 flex flex-col sm:flex-row gap-2 items-center">
+                <label for="diaconat-group-number" class="font-medium text-gray-700 whitespace-nowrap">Diaconat (Groupe de service):</label>
+                <input type="number" id="diaconat-group-number" placeholder="Diaconat Group No."
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="text" id="diaconat-group-name" placeholder="Name"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-diaconat-button"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Diaconat
+                </button>
+            </div>
+
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-announcement-input" placeholder="Enter new announcement"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <button id="add-announcement-button"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Announcement
+                </button>
+            </div>
+        </section>
+
+        <section id="departments" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Departments</h2>
+            <ul id="department-list" class="list-decimal list-inside">
+            </ul>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-department-name-input" placeholder="Enter new department name"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <button id="add-department-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Department
+                </button>
+            </div>
+        </section>
+
+        <section id="miscellaneous" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Miscellaneous (Annonces divers)</h2>
+            <ul id="sermon-list" class="list-decimal list-inside">
+            </ul>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-sermon-title-input" placeholder="Enter new title"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="text" id="new-sermon-speaker-input" placeholder="Enter new name"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-sermon-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Item
+                </button>
+            </div>
+        </section>
+
+
+        <section id="events" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Upcoming Events & Birthdays</h2>
+            <ul id="event-list" class="list-decimal list-inside">
+            </ul>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-event-input" placeholder="Enter new event"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="text" id="event-date-picker" placeholder="Select event date(s)"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-event-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Event
+                </button>
+            </div>
+        </section>
+
+        <section id="birthdays" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Birthdays</h2>
+            <ul id="birthday-list" class="list-decimal list-inside">
+            </ul>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-birthday-name-input" placeholder="Enter new name"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="date" id="new-birthday-date-input"
+                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-birthday-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Birthday
+                </button>
+            </div>
+        </section>
+
+        
+
+        <section id="donations" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Building Fund Donations</h2>
+            <p class="text-gray-700 mb-4">Thank you for your generosity! You can donate online or in person.</p>
+            <button id="donate-button" class="bg-yellow-500 hover:bg-yellow-700 text-gray-800 font-bold py-2 px-4 rounded-md">
+                Donate Now
+            </button>
+            <div id="donation-form" class="mt-4" style="display: none;">
+                <input type="number" id="donation-amount" placeholder="Enter amount"
+                                 class="border border-gray-300 rounded-md p-2 w-full">
+                <button id="confirm-donation-button"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 w-full">
+                    Confirm Donation
+                </button>
+                <p id="donation-message" class="mt-2 text-yellow-600 font-semibold"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 text-center mt-8">
+        <p>&copy; 2025 Gethsemane SDA Church App. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        const announcementList = document.getElementById('announcement-list');
+        const newAnnouncementInput = document.getElementById('new-announcement-input');
+        const addAnnouncementButton = document.getElementById('add-announcement-button');
+
+        // Elements for Ancien de service
+        const ancienServiceNameInput = document.getElementById('ancien-service-name');
+        const ancienServicePhoneInput = document.getElementById('ancien-service-phone');
+        const addAncienServiceButton = document.getElementById('add-ancien-service-button');
+
+        // New elements for Diaconat Service Group
+        const diaconatGroupNumberInput = document.getElementById('diaconat-group-number');
+        const diaconatGroupNameInput = document.getElementById('diaconat-group-name');
+        const addDiaconatButton = document.getElementById('add-diaconat-button');
+
+
+        const eventList = document.getElementById('event-list');
+        const newEventInput = document.getElementById('new-event-input');
+        const eventDatePicker = document.getElementById('event-date-picker'); // New reference for Flatpickr input
+        const addEventButton = document.getElementById('add-event-button');
+
+        const sermonList = document.getElementById('sermon-list');
+        const newSermonTitleInput = document.getElementById('new-sermon-title-input');
+        const newSermonSpeakerInput = document.getElementById('new-sermon-speaker-input');
+        const addSermonButton = document.getElementById('add-sermon-button');
+
+        const departmentList = document.getElementById('department-list');
+        const newDepartmentNameInput = document.getElementById('new-department-name-input');
+        const addDepartmentButton = document.getElementById('add-department-button');
+
+        const donateButton = document.getElementById('donate-button');
+        const donationForm = document.getElementById('donation-form');
+        const donationAmountInput = document.getElementById('donation-amount');
+        const confirmDonationButton = document.getElementById('confirm-donation-button');
+        const donationMessage = document.getElementById('donation-message');
+
+        const dailyThoughtDisplay = document.getElementById('daily-thought');
+        const newThoughtTextInput = document.getElementById('new-thought-text');
+        const addThoughtButton = document.getElementById('add-thought-button');
+
+        const newBirthdayNameInput = document.getElementById('new-birthday-name-input');
+        const newBirthdayDateInput = document.getElementById('new-birthday-date-input');
+        const addBirthdayButton = document.getElementById('add-birthday-button');
+        const birthdayList = document.getElementById('birthday-list');
+
+        // Define how many days for sunset display
+        const NUM_DAYS_SUNSET = 7;
+
+        const sunsetTimeDisplays = [];
+        for (let i = 0; i < NUM_DAYS_SUNSET; i++) {
+            sunsetTimeDisplays.push(document.getElementById(`sunset-time-${i}`));
+        }
+
+        const dayNameDisplays = [];
+        for (let i = 0; i < NUM_DAYS_SUNSET; i++) {
+            dayNameDisplays.push(document.getElementById(`day-name-${i}`));
+        }
+
+        // Define fixed announcements
+        const FIXED_ANNOUNCEMENTS = {
+            LESSON: "Leçon de l'école du sabbat tous les soirs @ 7:30.",
+            WEDNESDAY_PRAYER: "Réunion de prière tous les mercredis soir sur Zoom @ 7:30.",
+            FRIDAY_PRAYER: "Réunion de prière tous les vendredis soir @ 7:30 à l'église."
+        };
+
+        // Initialize from localStorage or with default values
+        let announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+        announcements = announcements.filter(announcement =>
+            announcement !== FIXED_ANNOUNCEMENTS.LESSON &&
+            announcement !== FIXED_ANNOUNCEMENTS.WEDNESDAY_PRAYER &&
+            announcement !== FIXED_ANNOUNCEMENTS.FRIDAY_PRAYER
+        );
+
+        let ancienServiceInfo = JSON.parse(localStorage.getItem('ancienServiceInfo')) || { name: '', phone: '' };
+        let diaconatInfo = JSON.parse(localStorage.getItem('diaconatInfo')) || { groupNumber: '', name: '' };
+
+        let events = JSON.parse(localStorage.getItem('events')) || [];
+        let sermons = JSON.parse(localStorage.getItem('sermons')) || [];
+        let departments = JSON.parse(localStorage.getItem('departments')) || [];
+        let birthdays = JSON.parse(localStorage.getItem('birthdays')) || [];
+        let currentThought = localStorage.getItem('dailyThought') || "Please enter your thought for the day.";
+
+        // Variable to hold Flatpickr's selected dates
+        let selectedEventDates = [];
+
+        // Initialize Flatpickr for the event date picker
+        flatpickr(eventDatePicker, {
+            mode: "range", // Enable range selection
+            dateFormat: "Y-m-d", // Format for the dates
+            altInput: true, // Show a human-readable date in the input
+            altFormat: "F j, Y", // Format for the human-readable date
+            minDate: null, // Allow selection of any date in the past
+            maxDate: null, // Allow selection of any date in the future
+            onClose: function(selectedDatesArray, dateStr, instance) {
+                // This callback fires when the calendar is closed after selection
+                if (selectedDatesArray.length === 2) {
+                    selectedEventDates = selectedDatesArray;
+                } else if (selectedDatesArray.length === 1) {
+                    // If only one date is selected, treat it as a single-day event
+                    selectedEventDates = [selectedDatesArray[0], selectedDatesArray[0]];
+                } else {
+                    selectedEventDates = []; // No dates selected
+                }
+            }
+        });
+
+
+        // --- Functions to manage localStorage and display ---
+        function saveToLocalStorage() {
+            localStorage.setItem('announcements', JSON.stringify(announcements));
+            localStorage.setItem('ancienServiceInfo', JSON.stringify(ancienServiceInfo));
+            localStorage.setItem('diaconatInfo', JSON.stringify(diaconatInfo));
+            localStorage.setItem('events', JSON.stringify(events));
+            localStorage.setItem('sermons', JSON.stringify(sermons));
+            localStorage.setItem('departments', JSON.stringify(departments));
+            localStorage.setItem('birthdays', JSON.stringify(birthdays));
+            localStorage.setItem('dailyThought', currentThought);
+        }
+
+        function displayAnnouncements() {
+            announcementList.innerHTML = ''; // Clear the list before repopulating
+
+            const itemsToDisplay = [];
+
+            // 1. Add Ancien de service (if present)
+            if (ancienServiceInfo.name || ancienServiceInfo.phone) {
+                let ancienText = "Ancien de service: ";
+                if (ancienServiceInfo.name) {
+                    ancienText += ancienServiceInfo.name;
+                }
+                if (ancienServiceInfo.name && ancienServiceInfo.phone) {
+                    ancienText += " - ";
+                }
+                if (ancienServiceInfo.phone) {
+                    const cleaned = ('' + ancienServiceInfo.phone).replace(/\D/g, '');
+                    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+                    if (match) {
+                        ancienText += `(${match[1]}) ${match[2]}-${match[3]}`;
+                    } else {
+                        ancienText += ancienServiceInfo.phone;
+                    }
+                }
+                itemsToDisplay.push(ancienText);
+            }
+
+            // Dynamically determine the index for the next fixed item insertion
+            let insertionIndex = itemsToDisplay.length;
+
+            // 2. Add "Leçon de l'école du sabbat"
+            itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.LESSON);
+            insertionIndex++;
+
+            // 3. Add Wednesday prayer
+            itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.WEDNESDAY_PRAYER);
+            insertionIndex++;
+
+            // 4. Add Friday prayer
+            itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.FRIDAY_PRAYER);
+            insertionIndex++;
+
+
+            // Add any other user-added announcements after the fixed ones
+            announcements.forEach(announcement => {
+                itemsToDisplay.push(announcement);
+            });
+
+
+            itemsToDisplay.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                li.style.wordWrap = 'break-word';
+
+                // Allow deletion only for dynamic announcements, not the fixed ones
+                // or the "Ancien de service" which is handled by its own input
+                if (!Object.values(FIXED_ANNOUNCEMENTS).includes(item) && item !== itemsToDisplay[0]) {
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                    deleteButton.addEventListener('click', () => {
+                        const originalIndex = announcements.indexOf(item);
+                        if (originalIndex > -1) {
+                            announcements.splice(originalIndex, 1);
+                        }
+                        displayAnnouncements();
+                    });
+                    li.appendChild(deleteButton);
+                }
+                announcementList.appendChild(li);
+            });
+
+
+            // Display Diaconat Service Group if info exists (this will always be the very last numbered item)
+            if (diaconatInfo.groupNumber || diaconatInfo.name) {
+                const diaconatLi = document.createElement('li');
+                let diaconatText = "Diaconat (Groupe de service): ";
+                if (diaconatInfo.groupNumber) {
+                    diaconatText += `#${diaconatInfo.groupNumber}`;
+                }
+                if (diaconatInfo.groupNumber && diaconatInfo.name) {
+                    diaconatText += " - ";
+                }
+                if (diaconatInfo.name) {
+                    diaconatText += diaconatInfo.name;
+                }
+                diaconatLi.textContent = diaconatText;
+                diaconatLi.style.wordWrap = 'break-word';
+                announcementList.appendChild(diaconatLi);
+            }
+
+            saveToLocalStorage();
+        }
+
+        function displayEvents() {
+            eventList.innerHTML = '';
+            events.forEach((event, index) => {
+                const li = document.createElement('li');
+                let dateDisplay = event.startDate;
+                if (event.startDate !== event.endDate) {
+                    dateDisplay += ` to ${event.endDate}`;
+                }
+                li.textContent = `${event.name} (${dateDisplay})`;
+                li.style.wordWrap = 'break-word';
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                deleteButton.addEventListener('click', () => {
+                    deleteEvent(index);
+                });
+                li.appendChild(deleteButton);
+                eventList.appendChild(li);
+            });
+            saveToLocalStorage();
+        }
+
+        function displaySermons() {
+            sermonList.innerHTML = '';
+            sermons.forEach((sermon, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${sermon.title} by ${sermon.speaker}`;
+                li.style.wordWrap = 'break-word';
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                deleteButton.addEventListener('click', () => {
+                    deleteSermon(index);
+                });
+                li.appendChild(deleteButton);
+                sermonList.appendChild(li);
+            });
+            saveToLocalStorage();
+        }
+
+        function displayDepartments() {
+            departmentList.innerHTML = '';
+            departments.forEach((department, index) => {
+                const li = document.createElement('li');
+                li.textContent = department;
+                li.style.wordWrap = 'break-word';
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                deleteButton.addEventListener('click', () => {
+                    deleteDepartment(index);
+                });
+                li.appendChild(deleteButton);
+                departmentList.appendChild(li);
+            });
+            saveToLocalStorage();
+        }
+
+        function displayBirthdays() {
+            birthdayList.innerHTML = '';
+            const today = new Date();
+            today.setHours(0, 0, 0, 0); // Normalize to start of today
+
+            // Filter for birthdays upcoming in the next 30 days (ignoring year)
+            const upcomingBirthdays = birthdays.filter(birthday => {
+                const birthdayDate = new Date(birthday.date);
+                // Create a date for the birthday in the current year
+                const currentYearBirthday = new Date(today.getFullYear(), birthdayDate.getMonth(), birthdayDate.getDate());
+                currentYearBirthday.setHours(0, 0, 0, 0);
+
+                const thirtyDaysFromNow = new Date(today);
+                thirtyDaysFromNow.setDate(today.getDate() + 30);
+                thirtyDaysFromNow.setHours(23, 59, 59, 999);
+
+                // If the birthday already passed this year, check for next year
+                if (currentYearBirthday < today) {
+                    currentYearBirthday.setFullYear(today.getFullYear() + 1);
+                }
+
+                return currentYearBirthday >= today && currentYearBirthday <= thirtyDaysFromNow;
+            });
+
+            upcomingBirthdays.forEach((birthday, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${birthday.name} - ${birthday.date}`; // Display original date
+                li.style.wordWrap = 'break-word';
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                deleteButton.addEventListener('click', () => {
+                    // Need to find the original index in the 'birthdays' array, not 'upcomingBirthdays'
+                    const originalIndex = birthdays.findIndex(b => b.name === birthday.name && b.date === birthday.date);
+                    if (originalIndex > -1) {
+                        deleteBirthday(originalIndex);
+                    }
+                });
+                li.appendChild(deleteButton);
+                birthdayList.appendChild(li);
+            });
+            saveToLocalStorage();
+        }
+
+
+        function deleteAnnouncement(index) {
+            announcements.splice(index, 1);
+            displayAnnouncements();
+        }
+
+        function deleteEvent(index) {
+            events.splice(index, 1);
+            displayEvents();
+        }
+
+        function deleteSermon(index) {
+            sermons.splice(index, 1);
+            displaySermons();
+        }
+
+        function deleteDepartment(index) {
+            departments.splice(index, 1);
+            displayDepartments();
+        }
+
+        function deleteBirthday(index) {
+            birthdays.splice(index, 1);
+            displayBirthdays();
+        }
+
+        function displayDailyThought() {
+            const text = newThoughtTextInput.value.trim();
+            if (text) {
+                dailyThoughtDisplay.textContent = text;
+                dailyThoughtDisplay.style.wordWrap = 'break-word';
+                currentThought = text;
+            } else if (currentThought) {
+                dailyThoughtDisplay.textContent = currentThought;
+            } else {
+                dailyThoughtDisplay.textContent = "Please enter your thought for the day.";
+            }
+            saveToLocalStorage();
+            newThoughtTextInput.value = '';
+        }
+
+        // Function to fetch sunrise and sunset data for the current day and upcoming days
+        async function getSunsetTimesForToday() {
+            const latitude = 27.2961; // Port St. Lucie, FL latitude
+            const longitude = -80.3117; // Port St. Lucie, FL longitude
+            const today = new Date();
+            const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            for (let i = 0; i < NUM_DAYS_SUNSET; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD
+
+                const sunsetApiUrl = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${formattedDate}&formatted=0`;
+
+                try {
+                    const response = await fetch(sunsetApiUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+
+                    if (data && data.results && data.status === 'OK') {
+                        const sunsetUTC = data.results.sunset;
+                        // Convert to local time in 'America/New_York' timezone
+                        const sunsetLocal = new Date(sunsetUTC).toLocaleString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: true });
+
+                        dayNameDisplays[i].textContent = dayNames[date.getDay()];
+                        sunsetTimeDisplays[i].textContent = `Sunset: ${sunsetLocal}`;
+                    } else {
+                        dayNameDisplays[i].textContent = dayNames[date.getDay()];
+                        sunsetTimeDisplays[i].textContent = 'Error';
+                        console.error(`Error fetching sunset data for ${formattedDate}:`, data);
+                    }
+                } catch (error) {
+                    console.error(`Error fetching sunset time for ${formattedDate}:`, error);
+                    dayNameDisplays[i].textContent = dayNames[date.getDay()];
+                    sunsetTimeDisplays[i].textContent = 'Failed to load';
+                }
+            }
+        }
+
+
+        // --- Event Listeners ---
+        addAnnouncementButton.addEventListener('click', () => {
+            const newAnnouncement = newAnnouncementInput.value;
+            if (newAnnouncement.trim() !== '') {
+                // Ensure new announcements don't duplicate fixed ones
+                if (!Object.values(FIXED_ANNOUNCEMENTS).includes(newAnnouncement.trim())) {
+                    announcements.push(newAnnouncement);
+                    displayAnnouncements();
+                    newAnnouncementInput.value = '';
+                } else {
+                    alert("This announcement is a fixed item and cannot be added manually.");
+                }
+            } else {
+                alert("Please enter an announcement!");
+            }
+        });
+
+        // Event listener for the "Add" button for Ancien de service
+        addAncienServiceButton.addEventListener('click', () => {
+            const name = ancienServiceNameInput.value.trim();
+            const phone = ancienServicePhoneInput.value.trim();
+
+            ancienServiceInfo.name = name;
+            ancienServiceInfo.phone = phone;
+
+            saveToLocalStorage();
+            displayAnnouncements();
+
+            // Clear the input fields after submission
+            ancienServiceNameInput.value = '';
+            ancienServicePhoneInput.value = '';
+        });
+
+        // Event listener for adding Diaconat Service Group
+        addDiaconatButton.addEventListener('click', () => {
+            const groupNumber = diaconatGroupNumberInput.value.trim();
+            const name = diaconatGroupNameInput.value.trim();
+
+            if (groupNumber !== '' || name !== '') { // Allow submission if at least one field is filled
+                diaconatInfo.groupNumber = groupNumber;
+                diaconatInfo.name = name;
+                saveToLocalStorage();
+                displayAnnouncements(); // Re-display to update the list
+                diaconatGroupNumberInput.value = ''; // Clear input
+                diaconatGroupNameInput.value = '';  // Clear input
+            } else {
+                alert("Please enter a group number or name for Diaconat Service Group!");
+            }
+        });
+
+
+        addEventButton.addEventListener('click', () => {
+            const newEventName = newEventInput.value.trim();
+
+            if (newEventName !== '' && selectedEventDates.length > 0) {
+                const startDate = selectedEventDates[0].toISOString().split('T')[0];
+                const endDate = selectedEventDates[1].toISOString().split('T')[0];
+
+                // Basic validation: ensure end date is not before start date (Flatpickr handles this well, but good to have)
+                if (new Date(startDate) <= new Date(endDate)) {
+                    events.push({ name: newEventName, startDate: startDate, endDate: endDate });
+                    displayEvents();
+                    newEventInput.value = '';
+                    eventDatePicker._flatpickr.clear(); // Clear Flatpickr input and selection
+                    selectedEventDates = []; // Reset internal array
+                } else {
+                    alert("End date cannot be before start date!");
+                }
+            } else {
+                alert("Please enter event name and select date(s)!");
+            }
+        });
+
+        addSermonButton.addEventListener('click', () => {
+            const newSermonTitle = newSermonTitleInput.value;
+            const newSermonSpeaker = newSermonSpeakerInput.value;
+            if (newSermonTitle.trim() !== '' && newSermonSpeaker.trim() !== '') {
+                sermons.push({ title: newSermonTitle, speaker: newSermonSpeaker });
+                displaySermons();
+                newSermonTitleInput.value = '';
+                newSermonSpeakerInput.value = '';
+            } else {
+                alert("Please enter both sermon title and speaker!");
+            }
+        });
+
+        addDepartmentButton.addEventListener('click', () => {
+            const newDepartmentName = newDepartmentNameInput.value;
+            if (newDepartmentName.trim() !== '') {
+                departments.push(newDepartmentName);
+                displayDepartments();
+                newDepartmentNameInput.value = '';
+            } else {
+                alert("Please enter a department name!");
+            }
+        });
+
+        addBirthdayButton.addEventListener('click', () => {
+            const newBirthdayName = newBirthdayNameInput.value;
+            const newBirthdayDate = newBirthdayDateInput.value;
+
+            if (newBirthdayName.trim() !== '' && newBirthdayDate !== '') {
+                birthdays.push({ name: newBirthdayName, date: newBirthdayDate });
+                displayBirthdays();
+                newBirthdayNameInput.value = '';
+                newBirthdayDateInput.value = ''; // Clears the date input field
+            } else {
+                alert("Please enter both name and date for the birthday!");
+            }
+        });
+
+        donateButton.addEventListener('click', () => {
+            donationForm.style.display = donationForm.style.display === 'none' ? 'block' : 'none';
+            donationMessage.textContent = ''; // Clear message when toggling
+        });
+
+        confirmDonationButton.addEventListener('click', () => {
+            const donationAmount = parseFloat(donationAmountInput.value);
+            if (!isNaN(donationAmount) && donationAmount > 0) {
+                donationMessage.textContent = `Thank you for your generous donation of $${donationAmount.toFixed(2)}!`; // Format to 2 decimal places
+                donationAmountInput.value = '';
+                setTimeout(() => {
+                    donationForm.style.display = 'none';
+                    donationMessage.textContent = '';
+                }, 3000); // Hide form and clear message after 3 seconds
+            } else {
+                donationMessage.textContent = "Please enter a valid donation amount.";
+            }
+        });
+
+        addThoughtButton.addEventListener('click', () => {
+            displayDailyThought();
+        });
+
+        // --- Initial Display and Data Loading ---
+
+        displayAnnouncements();
+        displayEvents();
+        displaySermons();
+        displayDepartments();
+        displayDailyThought();
+        getSunsetTimesForToday(); // Call to fetch and display sunset for multiple days
+        displayBirthdays(); // Call to display birthdays
+    </script>
+</body>
+</html>
