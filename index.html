@@ -253,7 +253,7 @@
         const FIXED_ANNOUNCEMENTS = {
             LESSON: "Leçon de l'école du sabbat tous les soirs @ 7:30.",
             WEDNESDAY_PRAYER: "Réunion de prière tous les mercredis soir sur Zoom @ 7:30.",
-            FRIDAY_PRAYER: "Réunion de prière tous les vendredis soir @ 7:30 à l'église."
+            FRIDAY_PRAYER: "Réunion de prière tous les vendredis soir @ 7:30 à l'église.",
             MEN: "Ministère des hommes réunion de prière tous les dimanches soir @ 8:30."
         };
 
@@ -263,7 +263,7 @@
             announcement !== FIXED_ANNOUNCEMENTS.LESSON &&
             announcement !== FIXED_ANNOUNCEMENTS.WEDNESDAY_PRAYER &&
             announcement !== FIXED_ANNOUNCEMENTS.FRIDAY_PRAYER &&
-            announcement !== FIXED_ANNOUNCEMENTS.MEN                                 
+            announcement !== FIXED_ANNOUNCEMENTS.MEN  
         );
 
         let ancienServiceInfo = JSON.parse(localStorage.getItem('ancienServiceInfo')) || { name: '', phone: '' };
