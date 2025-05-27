@@ -72,9 +72,9 @@
             <div class="mt-4 flex flex-col sm:flex-row gap-2 items-center">
                 <label for="ancien-service-name" class="font-medium text-gray-700 whitespace-nowrap">Ancien de service:</label>
                 <input type="text" id="ancien-service-name" placeholder="Name"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <input type="tel" id="ancien-service-phone" placeholder="Phone Number"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
                 <button id="add-ancien-service-button"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add
@@ -84,9 +84,9 @@
             <div class="mt-4 flex flex-col sm:flex-row gap-2 items-center">
                 <label for="diaconat-group-number" class="font-medium text-gray-700 whitespace-nowrap">Diaconat:</label>
                 <input type="number" id="diaconat-group-number" placeholder="Group de service No."
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <input type="text" id="diaconat-group-name" placeholder="Name"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
                 <button id="add-diaconat-button"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add Diaconat
@@ -95,7 +95,7 @@
 
             <div class="mt-4 flex flex-col sm:flex-row gap-2">
                 <input type="text" id="new-announcement-input" placeholder="Enter new announcement"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <button id="add-announcement-button"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add Announcement
@@ -109,7 +109,7 @@
             </ul>
             <div class="mt-4 flex flex-col sm:flex-row gap-2">
                 <input type="text" id="new-department-name-input" placeholder="Enter new department name"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <button id="add-department-button"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add Department
@@ -123,50 +123,47 @@
             </ul>
             <div class="mt-4 flex flex-col sm:flex-row gap-2">
                 <input type="text" id="new-sermon-title-input" placeholder="Enter new title"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <input type="text" id="new-sermon-speaker-input" placeholder="Enter new name"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
                 <button id="add-sermon-button"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add Item
                 </button>
             </div>
         </section>
-
-
-        <section id="events" class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-xl font-semibold text-blue-700 mb-4">Upcoming Events & Birthdays</h2>
-            <ul id="event-list" class="list-decimal list-inside">
-            </ul>
-            <div class="mt-4 flex flex-col sm:flex-row gap-2">
-                <input type="text" id="new-event-input" placeholder="Enter new event"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
-                <input type="text" id="event-date-picker" placeholder="Select event date(s)"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
-                <button id="add-event-button"
-                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
-                    Add Event
-                </button>
-            </div>
-        </section>
-
-        <section id="birthdays" class="bg-white rounded-lg shadow-md p-6 mb-6">
+		
+		<section id="birthdays" class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 class="text-xl font-semibold text-blue-700 mb-4">Birthdays</h2>
-            <ul id="birthday-list" class="list-decimal list-inside">
+            <ul id="birthday-list" class="mt-4 list-disc list-inside">
             </ul>
             <div class="mt-4 flex flex-col sm:flex-row gap-2">
                 <input type="text" id="new-birthday-name-input" placeholder="Enter new name"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                       class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
                 <input type="date" id="new-birthday-date-input"
-                                 class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                       class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
                 <button id="add-birthday-button"
                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
                     Add Birthday
                 </button>
             </div>
         </section>
-
-        
+		
+        <section id="events" class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-700 mb-4">Upcoming Events</h2>
+            <ul id="event-list" class="list-decimal list-inside">
+            </ul>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                <input type="text" id="new-event-input" placeholder="Enter new event"
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto">
+                <input type="text" id="event-date-picker" placeholder="Select event date(s)"
+                                            class="border border-gray-300 rounded-md p-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <button id="add-event-button"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-3 rounded-md mt-2 sm:mt-0">
+                    Add Event
+                </button>
+            </div>
+        </section>
 
         <section id="donations" class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 class="text-xl font-semibold text-blue-700 mb-4">Building Fund Donations</h2>
@@ -176,7 +173,7 @@
             </button>
             <div id="donation-form" class="mt-4" style="display: none;">
                 <input type="number" id="donation-amount" placeholder="Enter amount"
-                                 class="border border-gray-300 rounded-md p-2 w-full">
+                                            class="border border-gray-300 rounded-md p-2 w-full">
                 <button id="confirm-donation-button"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-md mt-2 w-full">
                     Confirm Donation
@@ -187,7 +184,7 @@
     </main>
 
     <footer class="bg-gray-800 text-white py-4 text-center mt-8">
-        <p>&copy; 2025 Gethsemane SDA Church App. All rights reserved.</p>
+        <p>&copy; 2025 Gethsemane SDA Church App v.01. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -206,10 +203,9 @@
         const diaconatGroupNameInput = document.getElementById('diaconat-group-name');
         const addDiaconatButton = document.getElementById('add-diaconat-button');
 
-
         const eventList = document.getElementById('event-list');
         const newEventInput = document.getElementById('new-event-input');
-        const eventDatePicker = document.getElementById('event-date-picker'); // New reference for Flatpickr input
+        const eventDatePicker = document.getElementById('event-date-picker');
         const addEventButton = document.getElementById('add-event-button');
 
         const sermonList = document.getElementById('sermon-list');
@@ -230,11 +226,13 @@
         const dailyThoughtDisplay = document.getElementById('daily-thought');
         const newThoughtTextInput = document.getElementById('new-thought-text');
         const addThoughtButton = document.getElementById('add-thought-button');
-
-        const newBirthdayNameInput = document.getElementById('new-birthday-name-input');
+		
+		const newBirthdayNameInput = document.getElementById('new-birthday-name-input');
         const newBirthdayDateInput = document.getElementById('new-birthday-date-input');
         const addBirthdayButton = document.getElementById('add-birthday-button');
         const birthdayList = document.getElementById('birthday-list');
+		
+		let birthdays = JSON.parse(localStorage.getItem('birthdays')) || [];
 
         // Define how many days for sunset display
         const NUM_DAYS_SUNSET = 7;
@@ -251,17 +249,18 @@
 
         // Define fixed announcements
         const FIXED_ANNOUNCEMENTS = {
-            LESSON: "Leçon de l'école du sabbat tous les soirs @ 7:30.",
-            WEDNESDAY_PRAYER: "Réunion de prière tous les mercredis soir sur Zoom @ 7:30.",
-            FRIDAY_PRAYER: "Réunion de prière tous les vendredis soir @ 7:30 à l'église."
+            LESSON: "Leçon de l'école du sabbat tous les soirs @ 7:30",
+            WEDNESDAY_PRAYER: "Réunion de prière tous les mercredis soir sur Zoom @ 7:30. (ZOOM ID: 472 679 6418)",
+            FRIDAY_PRAYER: "Réunion de prière tous les vendredis soir @ 7:30 à l'église Gethsemané.",
+            MEN: "Ministère des hommes: Réunion de prière tous les dimanches soir @ 8:30 sur WhatsApp.",
+            WOMEN: "Ministère de la femme: Réunion de prière tous les lundis soir de 7:30 heures à 8:30 heures sur WhatsApp."
         };
 
         // Initialize from localStorage or with default values
         let announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+        // Filter out fixed announcements from localStorage to ensure they are always added fresh and not duplicated or modified
         announcements = announcements.filter(announcement =>
-            announcement !== FIXED_ANNOUNCEMENTS.LESSON &&
-            announcement !== FIXED_ANNOUNCEMENTS.WEDNESDAY_PRAYER &&
-            announcement !== FIXED_ANNOUNCEMENTS.FRIDAY_PRAYER   
+            !Object.values(FIXED_ANNOUNCEMENTS).includes(announcement)
         );
 
         let ancienServiceInfo = JSON.parse(localStorage.getItem('ancienServiceInfo')) || { name: '', phone: '' };
@@ -270,11 +269,12 @@
         let events = JSON.parse(localStorage.getItem('events')) || [];
         let sermons = JSON.parse(localStorage.getItem('sermons')) || [];
         let departments = JSON.parse(localStorage.getItem('departments')) || [];
-        let birthdays = JSON.parse(localStorage.getItem('birthdays')) || [];
+        
         let currentThought = localStorage.getItem('dailyThought') || "Please enter your thought for the day.";
 
-        // Variable to hold Flatpickr's selected dates
+        // Variables to hold Flatpickr's selected dates for events
         let selectedEventDates = [];
+ 
 
         // Initialize Flatpickr for the event date picker
         flatpickr(eventDatePicker, {
@@ -282,8 +282,8 @@
             dateFormat: "Y-m-d", // Format for the dates
             altInput: true, // Show a human-readable date in the input
             altFormat: "F j, Y", // Format for the human-readable date
-            minDate: null, // Allow selection of any date in the past
-            maxDate: null, // Allow selection of any date in the future
+            minDate: null, 
+            maxDate: null, 
             onClose: function(selectedDatesArray, dateStr, instance) {
                 // This callback fires when the calendar is closed after selection
                 if (selectedDatesArray.length === 2) {
@@ -296,7 +296,77 @@
                 }
             }
         });
+		
+	    // Corrected displayBirthdays function
+		function displayBirthdays() {
+            birthdayList.innerHTML = '';
+            // Sort birthdays by month and then day
+            const sortedBirthdays = [...birthdays].sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                
+                // Handle potential invalid dates gracefully
+                if (isNaN(dateA.getTime())) return 1; // Push invalid dates to the end
+                if (isNaN(dateB.getTime())) return -1; // Push invalid dates to the end
 
+                const monthA = dateA.getMonth();
+                const dayA = dateA.getDate();
+                const monthB = dateB.getMonth();
+                const dayB = dateB.getDate();
+
+                if (monthA !== monthB) {
+                    return monthA - monthB;
+                }
+                return dayA - dayB;
+            });
+
+
+            sortedBirthdays.forEach((birthday, index) => {
+                const li = document.createElement('li');
+                
+                // Parse the date string safely for display
+                const dateParts = birthday.date.split('-'); // Assuming YYYY-MM-DD
+                // Create a Date object using individual components to avoid timezone issues
+                // Note: Months are 0-indexed in JavaScript Date (0 = January, 11 = December)
+                const displayDateObj = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]));
+
+                let displayDate;
+                if (!isNaN(displayDateObj.getTime())) { // Check if the date is valid
+                    displayDate = displayDateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                } else {
+                    displayDate = 'Invalid Date'; // Fallback for invalid dates
+                }
+                
+                li.textContent = `${birthday.name} - ${displayDate}`;
+                li.style.wordWrap = 'break-word';
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
+                
+                // Attach the delete event listener to the button
+                deleteButton.addEventListener('click', () => {
+                    // To delete from the original 'birthdays' array, we need the original index
+                    // rather than the 'index' from the sorted array.
+                    // A simple way is to pass the birthday object itself to the delete function
+                    // and find its index there.
+                    deleteBirthday(birthday); 
+                });
+                li.appendChild(deleteButton);
+                birthdayList.appendChild(li);
+            });
+            saveToLocalStorage(); 
+        }
+			
+		// Corrected deleteBirthday function
+		function deleteBirthday(birthdayToDelete) {
+            // Find the index of the specific birthday object in the original (unsorted) 'birthdays' array
+            const index = birthdays.findIndex(b => b.name === birthdayToDelete.name && b.date === birthdayToDelete.date);
+            if (index > -1) {
+                birthdays.splice(index, 1);
+                displayBirthdays(); // Re-display to update the list
+            }
+        }
 
         // --- Functions to manage localStorage and display ---
         function saveToLocalStorage() {
@@ -306,7 +376,7 @@
             localStorage.setItem('events', JSON.stringify(events));
             localStorage.setItem('sermons', JSON.stringify(sermons));
             localStorage.setItem('departments', JSON.stringify(departments));
-            localStorage.setItem('birthdays', JSON.stringify(birthdays));
+            localStorage.setItem('birthdays', JSON.stringify(birthdays)); // Save birthdays
             localStorage.setItem('dailyThought', currentThought);
         }
 
@@ -350,6 +420,14 @@
             // 4. Add Friday prayer
             itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.FRIDAY_PRAYER);
             insertionIndex++;
+            
+            // 5. Add Men Ministry
+            itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.MEN);
+            insertionIndex++;
+            
+            // 6. Add Women Ministry
+            itemsToDisplay.splice(insertionIndex, 0, FIXED_ANNOUNCEMENTS.WOMEN);
+            insertionIndex++;
 
 
             // Add any other user-added announcements after the fixed ones
@@ -365,16 +443,17 @@
 
                 // Allow deletion only for dynamic announcements, not the fixed ones
                 // or the "Ancien de service" which is handled by its own input
-                if (!Object.values(FIXED_ANNOUNCEMENTS).includes(item) && item !== itemsToDisplay[0]) {
+                if (!Object.values(FIXED_ANNOUNCEMENTS).includes(item) && item !== itemsToDisplay[0] && !item.startsWith("Diaconat (Groupe de service):")) {
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = 'Delete';
                     deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
                     deleteButton.addEventListener('click', () => {
+                        // Find the original index of the dynamic announcement to delete it
                         const originalIndex = announcements.indexOf(item);
                         if (originalIndex > -1) {
                             announcements.splice(originalIndex, 1);
                         }
-                        displayAnnouncements();
+                        displayAnnouncements(); // Re-display to update the list
                     });
                     li.appendChild(deleteButton);
                 }
@@ -407,10 +486,29 @@
             eventList.innerHTML = '';
             events.forEach((event, index) => {
                 const li = document.createElement('li');
-                let dateDisplay = event.startDate;
-                if (event.startDate !== event.endDate) {
-                    dateDisplay += ` to ${event.endDate}`;
+                
+                // Create Date objects from the stored YYYY-MM-DD strings.
+                // It's generally safer to parse YYYY-MM-DD as UTC if you are concerned about local timezone effects
+                // or parse components for consistent local date interpretation.
+                // For 'YYYY-MM-DD' alone, JavaScript Date parsing is inconsistent across browsers for local vs UTC.
+                // A common robust way for dates only is:
+                const startDateParts = event.startDate.split('-').map(Number);
+                const endDateParts = event.endDate.split('-').map(Number);
+                const startDateObj = new Date(startDateParts[0], startDateParts[1] - 1, startDateParts[2]);
+                const endDateObj = new Date(endDateParts[0], endDateParts[1] - 1, endDateParts[2]);
+
+
+                let dateDisplay;
+                if (event.startDate === event.endDate) {
+                    // If it's a single day, display "Month Day" (e.g., "May 27")
+                    dateDisplay = startDateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                } else {
+                    // If it's a range, display "Month Day to Month Day" (e.g., "May 27 to May 29")
+                    const startMonthDay = startDateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                    const endMonthDay = endDateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+                    dateDisplay = `${startMonthDay} to ${endMonthDay}`;
                 }
+
                 li.textContent = `${event.name} (${dateDisplay})`;
                 li.style.wordWrap = 'break-word';
                 const deleteButton = document.createElement('button');
@@ -461,51 +559,6 @@
             saveToLocalStorage();
         }
 
-        function displayBirthdays() {
-            birthdayList.innerHTML = '';
-            const today = new Date();
-            today.setHours(0, 0, 0, 0); // Normalize to start of today
-
-            // Filter for birthdays upcoming in the next 30 days (ignoring year)
-            const upcomingBirthdays = birthdays.filter(birthday => {
-                const birthdayDate = new Date(birthday.date);
-                // Create a date for the birthday in the current year
-                const currentYearBirthday = new Date(today.getFullYear(), birthdayDate.getMonth(), birthdayDate.getDate());
-                currentYearBirthday.setHours(0, 0, 0, 0);
-
-                const thirtyDaysFromNow = new Date(today);
-                thirtyDaysFromNow.setDate(today.getDate() + 30);
-                thirtyDaysFromNow.setHours(23, 59, 59, 999);
-
-                // If the birthday already passed this year, check for next year
-                if (currentYearBirthday < today) {
-                    currentYearBirthday.setFullYear(today.getFullYear() + 1);
-                }
-
-                return currentYearBirthday >= today && currentYearBirthday <= thirtyDaysFromNow;
-            });
-
-            upcomingBirthdays.forEach((birthday, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${birthday.name} - ${birthday.date}`; // Display original date
-                li.style.wordWrap = 'break-word';
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.className = "bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded-md ml-2 text-xs";
-                deleteButton.addEventListener('click', () => {
-                    // Need to find the original index in the 'birthdays' array, not 'upcomingBirthdays'
-                    const originalIndex = birthdays.findIndex(b => b.name === birthday.name && b.date === birthday.date);
-                    if (originalIndex > -1) {
-                        deleteBirthday(originalIndex);
-                    }
-                });
-                li.appendChild(deleteButton);
-                birthdayList.appendChild(li);
-            });
-            saveToLocalStorage();
-        }
-
-
         function deleteAnnouncement(index) {
             announcements.splice(index, 1);
             displayAnnouncements();
@@ -524,11 +577,6 @@
         function deleteDepartment(index) {
             departments.splice(index, 1);
             displayDepartments();
-        }
-
-        function deleteBirthday(index) {
-            birthdays.splice(index, 1);
-            displayBirthdays();
         }
 
         function displayDailyThought() {
@@ -556,7 +604,7 @@
             for (let i = 0; i < NUM_DAYS_SUNSET; i++) {
                 const date = new Date(today);
                 date.setDate(today.getDate() + i);
-                const formattedDate = date.toISOString().split('T')[0]; // YYYY-MM-DD
+                const formattedDate = date.toISOString().split('T')[0]; //YYYY-MM-DD
 
                 const sunsetApiUrl = `https://api.sunrise-sunset.org/json?lat=${latitude}&lng=${longitude}&date=${formattedDate}&formatted=0`;
 
@@ -659,7 +707,7 @@
             } else {
                 alert("Please enter event name and select date(s)!");
             }
-        });
+        });	
 
         addSermonButton.addEventListener('click', () => {
             const newSermonTitle = newSermonTitleInput.value;
@@ -684,18 +732,17 @@
                 alert("Please enter a department name!");
             }
         });
-
-        addBirthdayButton.addEventListener('click', () => {
+		
+		addBirthdayButton.addEventListener('click', () => {
             const newBirthdayName = newBirthdayNameInput.value;
             const newBirthdayDate = newBirthdayDateInput.value;
-
             if (newBirthdayName.trim() !== '' && newBirthdayDate !== '') {
                 birthdays.push({ name: newBirthdayName, date: newBirthdayDate });
                 displayBirthdays();
                 newBirthdayNameInput.value = '';
-                newBirthdayDateInput.value = ''; // Clears the date input field
+                newBirthdayDateInput.value = '';
             } else {
-                alert("Please enter both name and date for the birthday!");
+                alert("Please enter both name and date!");
             }
         });
 
@@ -730,7 +777,7 @@
         displayDepartments();
         displayDailyThought();
         getSunsetTimesForToday(); // Call to fetch and display sunset for multiple days
-        displayBirthdays(); // Call to display birthdays
+		displayBirthdays();
     </script>
 </body>
 </html>
